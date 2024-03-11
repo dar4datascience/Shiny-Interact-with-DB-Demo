@@ -89,7 +89,7 @@ server <- function(id) {
 
   output$commit_button_display <- renderUI({
     if (!displayedData$comment_commit_up_to_date) {
-      actionButton(session$ns("commit"), "click to save comments")
+      actionButton(session$ns("commit"), "click to save 💾 comments!")
     }
   })
 
