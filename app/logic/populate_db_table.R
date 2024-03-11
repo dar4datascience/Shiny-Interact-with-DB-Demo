@@ -1,4 +1,5 @@
 # Write several games to database ---------------------------------------------
+#' @export
 populate_db_table <- function(){
 
   db_con <- dbConnect(

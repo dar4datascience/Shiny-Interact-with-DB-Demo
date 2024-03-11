@@ -1,5 +1,5 @@
 ### Get Game PbP Data ---------------------------------------------
-
+#' @export
 pull_game_pbp_data <- function(game_id, con, verbose = FALSE){
 
   if(verbose){

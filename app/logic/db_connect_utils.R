@@ -1,10 +1,19 @@
+box::use(
+  DBI[dbConnect, dbDisconnect, dbWriteTable],
+  duckdb[duckdb],
+  DT[replaceData],
+  here[here],
+  dplyr[tbl, mutate, filter, pull, arrange, left_join, collect, bind_rows, select]
+)
+
+#' @export
 pull_data_from_game_selection <- function(game_selection,
                                           displayedData){
 
   ## connect to database
   db_con <- dbConnect(
-    drv = duckdb::duckdb(),
-    here::here("app/static/nba_playoffs.db")
+    drv = duckdb(),
+    here("app/static/nba_playoffs.db")
   )
 
   ##disconnect when reactive finishes
@@ -28,7 +37,7 @@ pull_data_from_game_selection <- function(game_selection,
 
 }
 
-
+#' @export
 proxy_update_datatable <- function(proxy, pbp_table_cell_edit, displayedData){
 
   info = pbp_table_cell_edit
@@ -61,11 +70,11 @@ proxy_update_datatable <- function(proxy, pbp_table_cell_edit, displayedData){
   replaceData(proxy, displayedData$pbp, resetPaging = FALSE, rownames = FALSE)
 }
 
-
+#' @export
 commit_changes_2_db <- function(displayedData){
   db_con <- dbConnect(
-    drv = duckdb::duckdb(),
-    here::here("app/static/nba_playoffs.db")
+    drv = duckdb(),
+    here("app/static/nba_playoffs.db")
   )
 
   ##disconnect when reactive finishes

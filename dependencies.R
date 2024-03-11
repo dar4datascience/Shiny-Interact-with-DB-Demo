@@ -1,2 +1,13 @@
 # This file allows packrat (used by rsconnect during deployment) to pick up dependencies.
 library(rhino)
+library(dplyr)
+library(stringr)
+library(purrr)
+library(htmltools)
+library(rvest)
+library(janitor)
+library(duckdb)
+library(DBI)
+library(shiny)
+library(shinyWidgets)
+library(DT)
