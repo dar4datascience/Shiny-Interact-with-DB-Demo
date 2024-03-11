@@ -1,7 +1,7 @@
 box::use(
   shiny[NS, mainPanel, uiOutput,
         moduleServer, reactiveValues, req, observeEvent, renderUI, actionButton],
-  bslib[layout_sidebar],
+  bslib[layout_sidebar, sidebar],
   shinyWidgets[pickerInput],
   DT[DTOutput, renderDT, dataTableProxy],
 )
@@ -16,16 +16,17 @@ ui <- function(id) {
   ns <- NS(id)
   layout_sidebar(
 
-                sidebar =
+                sidebar = sidebar(
                   pickerInput(
                     inputId = ns("game_selection"),
                     label = "Select Game:",
                     choices = games_available
                   ),
-                  DTOutput(outputId = ns("pbp_table")
-                           ),
                   uiOutput(outputId = ns("commit_button_display")
                   )
+                ),
+                  DTOutput(outputId = ns("pbp_table")
+                           )
                 )
 
 }
