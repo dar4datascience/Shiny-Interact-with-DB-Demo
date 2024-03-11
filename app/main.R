@@ -15,7 +15,8 @@ ui <- function(id) {
     title = "Shiny Interact with DB🛢",
     selected = "How to Use?🛢",
     collapsible = TRUE,
-    theme = bs_theme(bootswatch = "superhero"),
+    theme = bs_theme(bootswatch = "pulse",
+                     "navbar-bg" = "#593176"),
     sidebar = NULL,
     nav_panel(
       title = "How to Use?🛢",
@@ -24,14 +25,18 @@ ui <- function(id) {
           mds = c(
             "Instructions: 🛢 ",
             "# How to Use?",
-            "1. **Enter City**: Type the name of the city you want to map in the text field.",
-            "2. **Click 'Map it!'**: Press the button to generate the map.",
-            "3. **Wait**: The map will take a moment to load.",
-            "4. **Explore**: Once loaded, interact with the map to see details about the city.",
-            "5. **Enjoy**",
+            "1. **Select Game**: Choose a game from the dropdown menu labeled 'Select Game.'",
+            "2. **Data Loading**: Once you select a game, the app will automatically load the relevant data associated with that game.",
+            "3. **View Data**: After the data is loaded, you'll see a table displayed in the main panel of the app. This table represents the play-by-play (pbp) data for the selected game.",
+            "4. **Edit Data**: You can edit the data directly in the table by clicking on any cell and making changes. This feature allows you to update or modify the play-by-play data as needed.",
+            "5. **Commit Changes**: If you make any changes to the data, a 'click to save comments' button will appear below the table. Click this button to commit your changes and save them to the database.",
+            "6. **Wait for Confirmation**: After clicking the 'commit' button, wait for the app to confirm that your changes have been successfully saved to the database.",
+            "7. **Repeat as Needed**: You can repeat this process for different games by selecting a new game from the dropdown menu and following steps 3 to 6.",
+            "8. **Enjoy Using the App**!",
             "<br><br>",
             "![test image](https://www.iliketowastemytime.com/sites/default/files/best-gifs-pt6-nonono-cat.gif)"
           )
+
         )
       )
 
