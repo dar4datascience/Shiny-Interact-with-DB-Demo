@@ -1,7 +1,7 @@
 box::use(
   shiny[div, moduleServer, NS, renderUI, tags, uiOutput, markdown],
   bslib[bs_theme, page_navbar,
-        nav_panel, card, card_header, card_footer, card_body],
+        nav_panel, card],
 )
 
 box::use(
@@ -43,17 +43,9 @@ ui <- function(id) {
     ),
     nav_panel(
       title = "Demo",
-      card(
-        full_screen = TRUE,
-        card_header("2021 Playoffs"),
-        card_body(games_explorer$ui(ns("games_explorer"))
-        ),
-        card_footer(
-          "Data from TidyX"
+games_explorer$ui(ns("games_explorer"))
         )
-      )
     )
-  )
 
 }
 

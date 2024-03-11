@@ -1,7 +1,7 @@
 box::use(
   shiny[NS, mainPanel, uiOutput,
         moduleServer, reactiveValues, req, observeEvent, renderUI, actionButton],
-  bslib[layout_sidebar, sidebar],
+  bslib[layout_sidebar, sidebar, card, card_header, card_footer, card_body],
   shinyWidgets[pickerInput],
   DT[DTOutput, renderDT, dataTableProxy],
 )
@@ -25,9 +25,17 @@ ui <- function(id) {
                   uiOutput(outputId = ns("commit_button_display")
                   )
                 ),
+                card(
+                  full_screen = TRUE,
+                  card_header("2021 Playoffs"),
+                  card_body(
                   DTOutput(outputId = ns("pbp_table")
-                           )
+                           )),
+                  card_footer(
+                    "Data from TidyX"
+                  )
                 )
+  )
 
 }
 
