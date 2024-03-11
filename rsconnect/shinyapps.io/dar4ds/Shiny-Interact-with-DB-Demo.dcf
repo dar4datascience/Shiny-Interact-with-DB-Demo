@@ -1,0 +1,13 @@
+name: Shiny-Interact-with-DB-Demo
+title: Shiny-Interact-with-DB-Demo
+username: dar4ds
+account: dar4ds
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 11455085
+bundleId: 8357176
+url: https://dar4ds.shinyapps.io/Shiny-Interact-with-DB-Demo/
+version: 1
+asMultiple: FALSE
+asStatic: FALSE
+ignoredFiles: LICENSE|old.Rprofile|oldbaseapp.R|README.md|renv.lock
