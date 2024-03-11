@@ -4,6 +4,8 @@
 
 ### Packages ---------------------------------------------
 library(dplyr)
+library(stringr)
+library(purrr)
 library(htmltools)
 library(rvest)
 library(janitor)
@@ -13,11 +15,9 @@ library(shiny)
 library(shinyWidgets)
 library(DT)
 source("app/logic/db_connect_utils.R")
-source("app/logic/get_pbp_data.R")
-source("app/logic/populate_db_table.R")
 source("app/logic/pull_games_available.R")
 
-
+games_available <- pull_games_available()
 
 ### Shiny app with an auto refresh
 ui <- fluidPage(title = "2021 Playoffs",

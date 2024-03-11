@@ -8,21 +8,21 @@ pull_data_from_game_selection <- function(game_selection,
   )
 
   ##disconnect when reactive finishes
-  on.exit(dbDisconnect(db_con))
+  on.exit(dbDisconnect(db_con, shutdown = TRUE))
 
-  game_id <- tbl(db_con, "game_ids") %>%
-    filter( game_info == !!input$game_selection) %>%
+  game_id <- tbl(db_con, "game_ids") |>
+    filter( game_info == !!game_selection) |>
     pull(game_id)
 
   comments <- tbl(db_con, paste0("game_comments_",game_id))
 
-  pbp <- tbl(db_con, paste0("game_pbp_",game_id)) %>%
-    left_join(comments, by = "play_id_num") %>%
+  pbp <- tbl(db_con, paste0("game_pbp_",game_id)) |>
+    left_join(comments, by = "play_id_num") |>
     arrange(play_id_num)
 
   displayedData$game_id <- game_id
-  displayedData$comments <- comments %>% collect()
-  displayedData$pbp <- pbp %>% collect()
+  displayedData$comments <- comments |> collect()
+  displayedData$pbp <- pbp |> collect()
 
   displayedData$comment_commit_up_to_date <- TRUE
 
@@ -50,9 +50,9 @@ proxy_update_datatable <- function(proxy, pbp_table_cell_edit, displayedData){
       )
     )
 
-    displayedData$pbp <- displayedData$pbp %>%
-      select(-comment) %>%
-      left_join(displayedData$comments, by = "play_id_num") %>%
+    displayedData$pbp <- displayedData$pbp |>
+      select(-comment) |>
+      left_join(displayedData$comments, by = "play_id_num") |>
       arrange(play_id_num)
 
     displayedData$comment_commit_up_to_date <- FALSE
@@ -69,7 +69,7 @@ commit_changes_2_db <- function(displayedData){
   )
 
   ##disconnect when reactive finishes
-  on.exit(dbDisconnect(db_con))
+  on.exit(dbDisconnect(db_con, shutdown = TRUE))
 
   dbWriteTable(
     db_con,

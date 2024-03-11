@@ -6,9 +6,9 @@ db_con <- dbConnect(
 )
 
 on.exit(##disconnect
-  dbDisconnect(db_con))
+  dbDisconnect(db_con, shutdown = TRUE))
 
-games_available <- tbl(db_con, "game_ids") %>%
+games_available <- tbl(db_con, "game_ids") |>
   pull(game_info)
 
 

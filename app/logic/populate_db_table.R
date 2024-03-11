@@ -1,11 +1,12 @@
 # Write several games to database ---------------------------------------------
 populate_db_table <- function(){
 
-db_con <- duckdb(
-  here::here("app/static/nba_playoffs.db")
-)
+  db_con <- dbConnect(
+    drv = duckdb::duckdb(),
+    here::here("app/static/nba_playoffs.db")
+  )
 on.exit(##disconnect
-  dbDisconnect(db_con)
+  dbDisconnect(db_con, shutdown = TRUE)
 )
 
 ## write table
